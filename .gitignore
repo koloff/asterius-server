@@ -1,0 +1,5 @@
+node_modules
+tmp
+generated
+config/SETTINGS.json
+static/build

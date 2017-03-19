@@ -1,0 +1,32 @@
+{
+  "name": "asterius-server",
+  "version": "1.0.0",
+  "description": "Server side of the Asterius project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set NODE_ENV=development&& nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koloff/asterius-server.git"
+  },
+  "keywords": [
+    "fitness",
+    "hypertrophy",
+    "node",
+    "algorithm"
+  ],
+  "author": "Anton Kolov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koloff/asterius-server/issues"
+  },
+  "homepage": "https://github.com/koloff/asterius-server#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "helmet": "^3.5.0",
+    "morgan": "^1.8.1"
+  }
+}
