@@ -13,9 +13,7 @@ if (env === 'development') {
 
 let config = {};
 
-
 config.port = env.port || settings.port;
 config.secret = env.secret || settings.secret;
-
 
 module.exports = config;

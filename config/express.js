@@ -1,9 +1,9 @@
 let express = require('express');
 let path = require('path');
-// let subdomain = require('express-subdomain');
+let bodyParser = require('body-parser');
 let morgan = require('morgan');
 let helmet = require('helmet');
-let bodyParser = require('body-parser');
+// let subdomain = require('express-subdomain');
 
 module.exports = function(app, router) {
 

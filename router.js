@@ -1,11 +1,13 @@
 let router = require('express').Router();
-let c = require('./controllers');
-
+let controllers = require('./controllers');
 
 router.route('/muscles/collection')
-  .get(c.muscles.getMusclesCollection);
+  .get(controllers.muscles.getMusclesCollection);
+
+router.route('/exercises/collection')
+  .get(controllers.exercises.getExercisesCollection);
 
 router.route('/algorithm/generate-exercises')
-  .get(c.algorithm.generateExercises);
+  .get(controllers.algorithm.generateExercises);
 
 module.exports = router;

@@ -1,4 +1,5 @@
 module.exports = {
   algorithm: require('./algorithm'),
-  muscles: require('./muscles')
+  muscles: require('./muscles'),
+  exercises: require('./exercises')
 };

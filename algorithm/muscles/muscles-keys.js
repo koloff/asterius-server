@@ -1,4 +1,5 @@
 module.exports = {
+
   shoulders: {
     anteriorHead: 'shouldersAnteriorHead',
     lateralHead: 'shouldersLateralHead',
@@ -35,13 +36,14 @@ module.exports = {
   forearms: {
     brachioradialis: 'forearmsBrachioradialis',
     flexors: 'forearmsFlexors',
-    extensors: 'forearmExtensors'
+    extensors: 'forearmsExtensors'
   },
 
   legs: {
-    quadriceps: 'legsQuads',
+    quadriceps: 'legsQuadriceps',
     hamstrings: 'legsHamstrings',
     glutes: 'legsGlutes',
     calves: 'legsCalves'
   }
+
 };
