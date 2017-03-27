@@ -148,7 +148,7 @@ let muscles = [
       group: 'Triceps',
       name: 'Triceps Brachii Long Head',
       broName: 'Triceps Long Head',
-      color: "#ff00c4"
+      color: "#e500ff"
     }
   }),
   new Muscle({
