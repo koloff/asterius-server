@@ -1,8 +1,11 @@
 # asterius-server
-Server side of the Asterius project
+> Generating optimal fitness programs
 
-To run the app:
+## Build Setup
 
+``` bash
+# install dependencies
 npm install
 
-npm run start
+# start node server locally
+npm start
