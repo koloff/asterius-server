@@ -4,8 +4,12 @@
   "description": "Server side of the Asterius project",
   "main": "index.js",
   "scripts": {
+    "dev": "set NODE_ENV=development&& nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set NODE_ENV=development&& nodemon index.js"
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=7.0.0"
   },
   "repository": {
     "type": "git",
@@ -25,7 +29,9 @@
   "homepage": "https://github.com/koloff/asterius-server#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "debug": "^2.6.3",
     "express": "^4.15.2",
+    "firebase-admin": "^4.1.4",
     "helmet": "^3.5.0",
     "lodash": "^4.17.4",
     "morgan": "^1.8.1"

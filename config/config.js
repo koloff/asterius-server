@@ -1,19 +1,15 @@
 let path = require('path');
-let env = process.env.NODE_ENV || 'production';
+let env = process.env;
 
-let settings;
-if (env === 'development') {
-  settings ={
-    "port": 3377,
-    "secret": "johncena"
-  }
-} else {
-  settings = require('./SETTINGS.json');
+let nodeEnv = env.NODE_ENV || 'production';
+
+let sensitive = require('./SENSITIVE.json') || {};
+if (nodeEnv === 'development') {
+  sensitive.port = 3377;
 }
 
 let config = {};
-
-config.port = env.port || settings.port;
-config.secret = env.secret || settings.secret;
+config.port = env.port || sensitive.port;
+config.firebaseKey  = sensitive.firebaseKey;
 
 module.exports = config;

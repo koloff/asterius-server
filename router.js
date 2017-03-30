@@ -8,6 +8,6 @@ router.route('/exercises/collection')
   .get(controllers.exercises.getExercisesCollection);
 
 router.route('/algorithm/generate-exercises')
-  .get(controllers.algorithm.generateExercises);
+  .get(controllers.auth.authenticate, controllers.algorithm.generateExercises);
 
 module.exports = router;

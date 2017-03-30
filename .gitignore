@@ -2,5 +2,5 @@
 node_modules
 tmp
 generated
-config/SETTINGS.json
+config/SENSITIVE.json
 static/build
