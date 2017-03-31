@@ -6,6 +6,7 @@ exports.authenticate = function(req, res, next) {
       req.uid = decodedToken.uid;
       next()
     }).catch(function(error) {
+      console.log(error);
       res.status(403).end();
   });
 };

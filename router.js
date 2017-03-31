@@ -10,4 +10,7 @@ router.route('/exercises/collection')
 router.route('/algorithm/generate-exercises')
   .get(controllers.auth.authenticate, controllers.algorithm.generateExercises);
 
+router.route('/algorithm/generate-split')
+  .get(controllers.auth.authenticate, controllers.algorithm.generateSplit);
+
 module.exports = router;

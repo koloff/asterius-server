@@ -1,9 +1,45 @@
-let ec = require('../algorithm/exercises/exercises-collection');
+let admin = require('firebase-admin');
+let selectExercises = require('../algorithm/select-exercises');
+let generateSplit = require('../algorithm/generate-split');
 
 exports.generateExercises = function(req, res) {
-  console.log(req.header('X-Access-Token'));
-  res.status(200).send({exercises: [
-    {key: ec.keys.dumbbellBenchPress, sets: 3},
-    {key: ec.keys.lateralRaise, sets: 5}
-  ]});
+  let db = admin.database();
+  let uid = req.uid;
+
+
+  db.ref(`userParameters/${uid}`).once('value', (snap) => {
+    let userParameters = snap.val();
+
+    db.ref(`/preferredMuscles/${uid}`).once('value', (snap) => {
+      let preferredMuscles = snap.val();
+
+      let selected = selectExercises(userParameters, preferredMuscles);
+
+      db.ref(`/selectedExercises/${uid}`).set(selected)
+        .then(() => {
+          res.status(200).end();
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).end();
+        })
+    });
+  });
 };
+
+exports.generateSplit = function(req, res) {
+  let db = admin.database();
+  let uid = req.uid;
+
+
+  db.ref(`selectedExercises/${uid}`).once('value', (snap) => {
+    let selectedExercises = snap.val();
+    console.log(selectedExercises);
+
+    res.status(200).send({ok: true});
+  });
+};
+
+
+
+
