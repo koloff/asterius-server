@@ -8,10 +8,10 @@ let getSplitType = require('./get-split-type');
 let mc = require('./muscles/muscles-collection');
 
 
-function generateSplit(userData, preferredMuscles) {
+function generateSplit() {
 
-  // mock
-  userData = {
+  // mock userData
+  let userData = {
     hasParameters: false,
 
     measuringUnit: 'metric',
@@ -29,17 +29,24 @@ function generateSplit(userData, preferredMuscles) {
     }
   };
 
-  preferredMuscles = [
-    mc.keys.chest.clavicularHead,
-    mc.keys.legs.calves,
-    mc.keys.legs.quadriceps,
-    mc.keys.legs.hamstrings
+
+  // mock preferred muscles
+  let preferredMuscles = [
+    mc.keys.shoulders.posteriorHead
   ];
 
+  let maxPreferredMuscles = [
+    mc.keys.shoulders.lateralHead,
+    mc.keys.chest.clavicularHead,
+    mc.keys.chest.sternalHead,
+  ];
+
+  let minPreferredMuscles = [
+    mc.keys.triceps.longHead
+  ];
 
   let muscles = _.clone(mc.muscles);
   let exercises = _.clone(ec.exercises);
-
 
 
   // Model ILPP constraints
@@ -49,17 +56,19 @@ function generateSplit(userData, preferredMuscles) {
   let isolationExercisesForPreferredMuscles = [];
 
   muscles.forEach((muscle) => {
-    constraints[muscle.key] = {
-      max: (muscle.mrv * 100) / 2,
-    };
+    constraints[muscle.key] = {};
+    constraints[muscle.key].max = (muscle.mrv * 100) / 2; // todo function
 
     if (preferredMuscles.indexOf(muscle.key) >= 0) {
+      constraints[muscle.key].min = (muscle.mrv * 100) / 3;
+    }
+    if (maxPreferredMuscles.indexOf(muscle.key) >= 0) {
       isolationExercisesForPreferredMuscles.push(getIsolationExerciseKey(muscle.key));
     }
   });
 
   constraints.sets = {
-    max: 20  // TODO make parameter
+    max: 26  // TODO make parameter
   };
 
 
@@ -70,7 +79,7 @@ function generateSplit(userData, preferredMuscles) {
       constraints[exercise.key].min = 3;
     }
 
-    constraints[exercise.key].max = 5; // TODO make max sets for particular exercise function (can add to collection)
+    constraints[exercise.key].max = 3; // TODO make max sets for particular exercise function (can add to collection)
   });
 
 
@@ -82,26 +91,39 @@ function generateSplit(userData, preferredMuscles) {
     exerciseVar.sets = 1;
     exerciseVar[exercise.key] = 1;
 
-    let targetMusclesVolume = 0;
+    let maxPreferredMusclesVolume = 0;
+    let minPreferredMusclesVolume = 0;
     _.forOwn(exercise.musclesUsed, (percentage, mKey) => {
       exerciseVar[mKey] = percentage;
-      if (preferredMuscles.indexOf(mKey) >= 0) {
-        targetMusclesVolume += percentage;
+      if (maxPreferredMuscles.indexOf(mKey) >= 0) {
+        maxPreferredMusclesVolume += percentage;
+      } else if (minPreferredMuscles.indexOf(mKey) >= 0) {
+        minPreferredMusclesVolume += percentage;
       }
     });
 
-    exerciseVar['targetMusclesVolume'] = targetMusclesVolume;
+    exerciseVar['maxPreferredMusclesVolume'] = maxPreferredMusclesVolume;
+    exerciseVar['minPreferredMusclesVolume'] = minPreferredMusclesVolume;
+
     variables[exercise.key] = exerciseVar;
   });
 
 
   console.log(constraints);
   console.log(variables);
+  console.log(isolationExercisesForPreferredMuscles);
 
-  console.log(mc.keys.triceps.longHead);
+  // let result = lpSolver.MultiObjective({
+  //   optimize: {
+  //     maxPreferredMusclesVolume: 'max',
+  //     minPreferredMusclesVolume: 'min'
+  //   },
+  //   constraints: constraints,
+  //   variables: variables,
+  // });
 
   let result = lpSolver.Solve({
-    optimize: 'targetMusclesVolume',
+    optimize: 'maxPreferredMusclesVolume',
     opType: 'max',
     constraints: constraints,
     variables: variables,
