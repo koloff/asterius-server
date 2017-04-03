@@ -33,6 +33,7 @@
     "express": "^4.15.2",
     "firebase-admin": "^4.1.4",
     "helmet": "^3.5.0",
+    "javascript-lp-solver": "^0.4.3",
     "lodash": "^4.17.4",
     "morgan": "^1.8.1"
   }

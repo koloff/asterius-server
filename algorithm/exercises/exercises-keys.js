@@ -4,7 +4,7 @@ module.exports = {
     dumbbellBenchPress: 'dumbbellBenchPress',
     dumbbellInclineBenchPress: 'dumbbellInclineBenchPress',
     lowCableCrossover: 'lowCableCrossover',
-    cableCrossover: 'cableCrossover',
+    highCableCrossover: 'highCableCrossover',
   },
 
 

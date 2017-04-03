@@ -56,9 +56,9 @@ let exercises = [
     key: keys.chest.lowCableCrossover,
     type: types.isolation,
     musclesUsed: {
-      [mc.keys.chest.clavicularHead]: 65,
-      [mc.keys.shoulders.anteriorHead]: 25,
-      [mc.keys.chest.sternalHead]: 10
+      [mc.keys.chest.sternalHead]: 70,
+      [mc.keys.shoulders.anteriorHead]: 20,
+      [mc.keys.chest.clavicularHead]: 10
     },
     info: {
       name: 'Low Cable Crossover',
@@ -67,15 +67,15 @@ let exercises = [
   }),
 
   new Exercise({
-    key: keys.chest.cableCrossover,
+    key: keys.chest.highCableCrossover,
     type: types.isolation,
     musclesUsed: {
-      [mc.keys.chest.sternalHead]: 70,
-      [mc.keys.shoulders.anteriorHead]: 20,
-      [mc.keys.chest.clavicularHead]: 10
+      [mc.keys.chest.clavicularHead]: 65,
+      [mc.keys.shoulders.anteriorHead]: 25,
+      [mc.keys.chest.sternalHead]: 10
     },
     info: {
-      name: 'Cable Crossover',
+      name: 'High Cable Crossover',
       group: 'Chest'
     }
   }),
