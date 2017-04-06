@@ -8,10 +8,22 @@ function get(key) {
   });
 }
 
+let types = {
+  upperBody: 'upperBody',
+  lowerBody: 'lowerBody',
+  push: 'push',
+  pull: 'pull',
+  other: 'other'
+};
+
+// mev - minimum effective volume for 1 session
+// mrv - minimum recoverable volume for 1 session
 let muscles = [
   new Muscle({
     key: keys.shoulders.anteriorHead,
-    mrv: 8,
+    mev: 1,
+    mrv: 5,
+    types: [types.upperBody, types.push],
     info: {
       group: 'Shoulders',
       name: 'Deltoid Anterior Head',
@@ -21,8 +33,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.shoulders.lateralHead,
-
-    mrv: 8,
+    mev: 1,
+    mrv: 5,
+    types: [types.upperBody, types.push],
     info: {
       group: 'Shoulders',
       name: 'Deltoid Lateral Head',
@@ -32,7 +45,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.shoulders.posteriorHead,
-    mrv: 6,
+    mev: 1,
+    mrv: 5,
+    types: [types.upperBody, types.pull],
     info: {
       group: 'Shoulders',
       name: 'Deltoid Posterior Head',
@@ -42,7 +57,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.chest.clavicularHead,
-    mrv: 10,
+    mev: 2,
+    mrv: 6,
+    types: [types.upperBody, types.push],
     info: {
       group: 'Chest',
       name: 'Pectoralis Major Clavicular Head',
@@ -52,7 +69,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.chest.sternalHead,
-    mrv: 12,
+    mev: 2,
+    mrv: 6,
+    types: [types.upperBody, types.push],
     info: {
       group: 'Chest',
       name: 'Pectoralis Major Sternal Head',
@@ -62,7 +81,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.back.upperTrapezius,
-    mrv: 6,
+    mev: 0.7,
+    mrv: 4,
+    types: [types.upperBody, types.pull],
     info: {
       group: 'Back',
       name: 'Trapezius Superior Fibers',
@@ -72,8 +93,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.back.middleBack,
-    mrv: 10,
-
+    mev: 1.5,
+    mrv: 6,
+    types: [types.upperBody, types.pull],
     info: {
       group: 'Back',
       name: 'Trapezius Inferior Fibers, Rhomboid',
@@ -83,7 +105,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.back.lats,
-    mrv: 10,
+    mev: 1.5,
+    mrv: 6,
+    types: [types.upperBody, types.pull],
     info: {
       group: 'Back',
       name: 'Latissimus Dorsi',
@@ -93,7 +117,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.back.rotatorCuff,
-    mrv: 6,
+    mev: 0.7,
+    mrv: 4,
+    types: [types.upperBody, types.pull],
     info: {
       group: 'Back',
       name: 'Teres Minor, Infraspinatus, Supraspinatus, Subscapularis',
@@ -103,7 +129,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.core.abs,
-    mrv: 8,
+    mev: 1.3,
+    mrv: 4,
+    types: [types.upperBody, types.other],
     info: {
       group: 'Core',
       name: 'Rectus Abdominis',
@@ -113,7 +141,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.core.obliques,
-    mrv: 6,
+    mev: 0.7,
+    mrv: 4,
+    types: [types.upperBody, types.other],
     info: {
       group: 'Core',
       name: 'Abdominal Obliques',
@@ -123,7 +153,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.biceps.longHead,
-    mrv: 8,
+    mev: 1,
+    mrv: 4,
+    types: [types.upperBody, types.pull],
     info: {
       group: 'Biceps',
       name: 'Biceps Brachii Long Head',
@@ -133,7 +165,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.biceps.shortHead,
-    mrv: 8,
+    mev: 0.8,
+    mrv: 4,
+    types: [types.upperBody, types.pull],
     info: {
       group: 'Biceps',
       name: 'Biceps Brachii Short Head',
@@ -143,7 +177,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.triceps.longHead,
-    mrv: 8,
+    mev: 1,
+    mrv: 6,
+    types: [types.upperBody, types.push],
     info: {
       group: 'Triceps',
       name: 'Triceps Brachii Long Head',
@@ -153,7 +189,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.triceps.shortHead,
-    mrv: 8,
+    mev: 0.7,
+    mrv: 5,
+    types: [types.upperBody, types.push],
     info: {
       group: 'Triceps',
       name: 'Triceps Brachii Lateral Head',
@@ -163,7 +201,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.forearms.brachioradialis,
-    mrv: 6,
+    mev: 0.7,
+    mrv: 4,
+    types: [types.upperBody, types.pull],
     info: {
       group: 'Forearms',
       name: 'Brachioradialis',
@@ -173,7 +213,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.forearms.flexors,
-    mrv: 4,
+    mev: 0.3,
+    mrv: 3,
+    types: [types.upperBody, types.other],
     info: {
       group: 'Forearms',
       name: 'Flexors Group',
@@ -183,7 +225,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.forearms.extensors,
-    mrv: 4,
+    mev: 0.3,
+    mrv: 3,
+    types: [types.upperBody, types.other],
     info: {
       group: 'Forearms',
       name: 'Extensors Group',
@@ -193,7 +237,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.legs.quadriceps,
-    mrv: 12,
+    mev: 1.5,
+    mrv: 7,
+    types: [types.lowerBody],
     info: {
       group: 'Legs',
       name: 'Quadriceps Group',
@@ -203,7 +249,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.legs.hamstrings,
-    mrv: 10,
+    mev: 1.5,
+    mrv: 7,
+    types: [types.lowerBody],
     info: {
       group: 'Legs',
       name: 'Hamstrings Group',
@@ -213,7 +261,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.legs.glutes,
-    mrv: 10,
+    mev: 1,
+    mrv: 7,
+    types: [types.lowerBody],
     info: {
       group: 'Legs',
       name: 'Gluteus Group',
@@ -223,7 +273,9 @@ let muscles = [
   }),
   new Muscle({
     key: keys.legs.calves,
-    mrv: 8,
+    mev: 0.5,
+    mrv: 5,
+    types: [types.lowerBody, types.other],
     info: {
       group: 'Legs',
       name: 'Soleus, Gastrocnemius',
@@ -234,6 +286,13 @@ let muscles = [
 
 ];
 
+let sum = 0;
+muscles.forEach((muscle) => {
+  sum+=muscle.mev
+});
+
+
+console.log(sum);
 module.exports = {
   keys, muscles, get
 };

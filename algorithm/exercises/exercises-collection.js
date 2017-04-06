@@ -87,9 +87,10 @@ let exercises = [
     key: keys.shoulders.lateralRaise,
     type: types.isolation,
     musclesUsed: {
-      [mc.keys.shoulders.lateralHead]: 70,
+      [mc.keys.shoulders.lateralHead]: 60,
       [mc.keys.shoulders.anteriorHead]: 15,
       [mc.keys.shoulders.posteriorHead]: 15,
+      [mc.keys.back.upperTrapezius]: 10
     },
     info: {
       name: 'Lateral Raise',
@@ -122,7 +123,7 @@ let exercises = [
       [mc.keys.back.middleBack]: 20
     },
     info: {
-      name: 'Reverse Pec-Deck Flye',
+      name: 'Reverse Pec-Deck',
       group: 'Shoulders'
     }
   }),
@@ -134,12 +135,11 @@ let exercises = [
     key: keys.back.latPulldownWideGrip,
     type: types.compound,
     musclesUsed: {
-      [mc.keys.back.lats]: 50,
-      [mc.keys.biceps.shortHead]: 15,
-      [mc.keys.biceps.longHead]: 15,
-      [mc.keys.shoulders.posteriorHead]: 10,
-      [mc.keys.forearms.flexors]: 5,
-      [mc.keys.forearms.brachioradialis]: 5
+      [mc.keys.back.lats]: 35,
+      [mc.keys.back.middleBack]: 25,
+      [mc.keys.back.rotatorCuff]: 15,
+      [mc.keys.biceps.shortHead]: 12,
+      [mc.keys.biceps.longHead]: 13,
     },
     info: {
       name: 'Wide Grip Lat Pulldown',
@@ -152,10 +152,10 @@ let exercises = [
     type: types.compound,
     musclesUsed: {
       [mc.keys.back.middleBack]: 50,
-      [mc.keys.back.lats]: 15,
-      [mc.keys.shoulders.posteriorHead]: 10,
-      [mc.keys.biceps.shortHead]: 8,
-      [mc.keys.biceps.longHead]: 7,
+      [mc.keys.back.lats]: 30,
+      [mc.keys.shoulders.posteriorHead]: 5,
+      [mc.keys.biceps.shortHead]: 5,
+      [mc.keys.biceps.longHead]: 5,
       [mc.keys.forearms.brachioradialis]: 5,
       [mc.keys.forearms.flexors]: 5
     },
@@ -165,20 +165,20 @@ let exercises = [
     }
   }),
 
-  new Exercise({
-    key: keys.back.straightArmPulldown,
-    type: types.isolation,
-    musclesUsed: {
-      [mc.keys.back.lats]: 60,
-      [mc.keys.back.middleBack]: 20,
-      [mc.keys.shoulders.posteriorHead]: 10,
-      [mc.keys.triceps.longHead]: 10
-    },
-    info: {
-      name: 'Straight Arm Pulldown',
-      group: 'Back'
-    }
-  }),
+  // new Exercise({
+  //   key: keys.back.straightArmPulldown,
+  //   type: types.isolation,
+  //   musclesUsed: {
+  //     [mc.keys.back.lats]: 60,
+  //     [mc.keys.back.middleBack]: 20,
+  //     [mc.keys.shoulders.posteriorHead]: 10,
+  //     [mc.keys.triceps.longHead]: 10
+  //   },
+  //   info: {
+  //     name: 'Straight Arm Pulldown',
+  //     group: 'Back'
+  //   }
+  // }),
 
   new Exercise({
     key: keys.back.dumbbellShrug,
@@ -215,9 +215,10 @@ let exercises = [
     key: keys.biceps.inclineDumbbellCurl,
     type: types.isolation,
     musclesUsed: {
-      [mc.keys.biceps.longHead]: 60,
-      [mc.keys.biceps.shortHead]: 30,
-      [mc.keys.forearms.flexors]: 10
+      [mc.keys.biceps.longHead]: 50,
+      [mc.keys.biceps.shortHead]: 40,
+      [mc.keys.forearms.flexors]: 5,
+      [mc.keys.forearms.brachioradialis]: 5
     },
     info: {
       name: 'Incline Dumbbell Curl',
@@ -231,7 +232,8 @@ let exercises = [
     musclesUsed: {
       [mc.keys.biceps.longHead]: 45,
       [mc.keys.biceps.shortHead]: 45,
-      [mc.keys.forearms.flexors]: 10
+      [mc.keys.forearms.flexors]: 5,
+      [mc.keys.forearms.brachioradialis]: 5
     },
     info: {
       name: 'Barbell Curl',
@@ -243,9 +245,10 @@ let exercises = [
     key: keys.biceps.overheadCableCurl,
     type: types.isolation,
     musclesUsed: {
-      [mc.keys.biceps.shortHead]: 60,
-      [mc.keys.biceps.longHead]: 30,
-      [mc.keys.forearms.flexors]: 10
+      [mc.keys.biceps.shortHead]: 50,
+      [mc.keys.biceps.longHead]: 40,
+      [mc.keys.forearms.flexors]: 5,
+      [mc.keys.forearms.brachioradialis]: 5
     },
     info: {
       name: 'Overhead Cable Curl',
@@ -261,8 +264,7 @@ let exercises = [
     type: types.isolation,
     musclesUsed: {
       [mc.keys.triceps.longHead]: 60,
-      [mc.keys.triceps.shortHead]: 30,
-      [mc.keys.forearms.extensors]: 10
+      [mc.keys.triceps.shortHead]: 40
     },
     info: {
       name: 'Seated Triceps Press',
@@ -274,9 +276,8 @@ let exercises = [
     key: keys.triceps.ropePushdown,
     type: types.isolation,
     musclesUsed: {
-      [mc.keys.triceps.shortHead]: 45,
-      [mc.keys.triceps.longHead]: 35,
-      [mc.keys.forearms.extensors]: 10
+      [mc.keys.triceps.longHead]: 50,
+      [mc.keys.triceps.shortHead]: 50
     },
     info: {
       name: 'Rope Pushdown',
@@ -288,9 +289,8 @@ let exercises = [
     key: keys.triceps.skullCrushers,
     type: types.isolation,
     musclesUsed: {
-      [mc.keys.triceps.longHead]: 45,
-      [mc.keys.triceps.shortHead]: 45,
-      [mc.keys.forearms.extensors]: 10
+      [mc.keys.triceps.longHead]: 60,
+      [mc.keys.triceps.shortHead]: 40
     },
     info: {
       name: 'Skull Crusher',
@@ -305,8 +305,8 @@ let exercises = [
     key: keys.core.crunches,
     type: types.isolation,
     musclesUsed: {
-      [mc.keys.core.abs]: 80,
-      [mc.keys.core.obliques]: 20
+      [mc.keys.core.abs]: 70,
+      [mc.keys.core.obliques]: 30
     },
     info: {
       name: 'Crunch',
@@ -334,7 +334,8 @@ let exercises = [
     key: keys.legs.barbellSquat,
     type: types.compound,
     musclesUsed: {
-      [mc.keys.legs.quadriceps]: 50,
+      [mc.keys.legs.quadriceps]: 35,
+      [mc.keys.legs.hamstrings]: 15,
       [mc.keys.legs.glutes]: 30,
       [mc.keys.legs.calves]: 10,
       [mc.keys.legs.hamstrings]: 10
@@ -344,6 +345,8 @@ let exercises = [
       group: 'Legs'
     }
   }),
+
+
 
   new Exercise({
     key: keys.legs.legExtension,

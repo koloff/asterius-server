@@ -1,5 +1,4 @@
 let admin = require('firebase-admin');
-let selectExercises = require('../algorithm/select-exercises');
 let generateSplit = require('../algorithm/generate-split');
 
 exports.generateExercises = function(req, res) {
@@ -13,7 +12,7 @@ exports.generateExercises = function(req, res) {
     db.ref(`/preferredMuscles/${uid}`).once('value', (snap) => {
       let preferredMuscles = snap.val();
 
-      let selected = selectExercises(userParameters, preferredMuscles);
+      let selected = []; // todo
 
       db.ref(`/selectedExercises/${uid}`).set(selected)
         .then(() => {
