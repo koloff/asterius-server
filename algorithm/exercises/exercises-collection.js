@@ -4,12 +4,6 @@ let Exercise = require('./exercise');
 let keys = require('./exercises-keys');
 
 
-function getExercise(key) {
-  return _.find(function(exercise) {
-    return exercise.key === key;
-  });
-}
-
 const types = {
   compound: 'compound',
   isolation: 'isolation'
@@ -385,9 +379,15 @@ let exercises = [
     }
   })
 
-
 ];
 
+
+function get(key) {
+  return _.find(exercises, (exercise) => {
+    return exercise.key === key;
+  });
+}
+
 module.exports = {
-  keys, getExercise, exercises
+  keys, get, exercises
 };

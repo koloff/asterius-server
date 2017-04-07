@@ -2,11 +2,6 @@ let _ = require('lodash');
 let Muscle = require('./muscle');
 let keys = require('./muscles-keys');
 
-function get(key) {
-  return _.find(function(muscle) {
-    return muscle.key === key;
-  });
-}
 
 let types = {
   upperBody: 'upperBody',
@@ -131,7 +126,7 @@ let muscles = [
     key: keys.core.abs,
     mev: 1.3,
     mrv: 4,
-    types: [types.upperBody, types.other],
+    types: [types.other],
     info: {
       group: 'Core',
       name: 'Rectus Abdominis',
@@ -143,7 +138,7 @@ let muscles = [
     key: keys.core.obliques,
     mev: 0.7,
     mrv: 4,
-    types: [types.upperBody, types.other],
+    types: [types.other],
     info: {
       group: 'Core',
       name: 'Abdominal Obliques',
@@ -286,13 +281,19 @@ let muscles = [
 
 ];
 
-let sum = 0;
-muscles.forEach((muscle) => {
-  sum+=muscle.mev
-});
+function get(key) {
+  return _.find(muscles,function(muscle) {
+    return muscle.key === key;
+  });
+}
+
+// let sum = 0;
+// muscles.forEach((muscle) => {
+//   sum+=muscle.mev
+// });
+// console.log(sum);
 
 
-console.log(sum);
 module.exports = {
   keys, muscles, get
 };
