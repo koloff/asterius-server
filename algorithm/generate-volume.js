@@ -4,7 +4,6 @@ let lpSolver = require('../lib/lp-solver/original/solver');
 let mc = require('./muscles/muscles-collection');
 let ec = require('./exercises/exercises-collection');
 
-// TODO (optional): add max sets for each exercise
 // TODO (optional): add constraint for minimum compound lifts; add type parameter to exercise collection
 /**
  * Get parameters object and returns workout array in the form: [{exerciseKey: setsCount}]
@@ -22,6 +21,8 @@ function generateVolume(parameters) {
   let muscles = mc.muscles;
   let exercises = ec.exercises;
 
+
+  console.log(parameters);
 
   // ILPP model constraints
   let constraints = {};
@@ -58,8 +59,6 @@ function generateVolume(parameters) {
       isolationExercisesForPreferredMuscles.push(getIsolationExerciseKey(mKey));
     }
   });
-
-  console.log(isolationExercisesForPreferredMuscles);
 
   // create int and binaries variables types
   let ints = {};
@@ -104,13 +103,6 @@ function generateVolume(parameters) {
   });
 
 
-  console.log(constraints);
-  console.log(variables);
-  console.log(ints);
-  console.log(binaries);
-  console.log('__________________________________________');
-  console.log('SOLUTION');
-
   let result = lpSolver.Solve({
     optimize: 'trainedMusclesVolume',
     opType: 'max',
@@ -119,9 +111,10 @@ function generateVolume(parameters) {
     ints,
     binaries
   });
-  console.log(result);
 
   let workout = [];
+
+
   if (result.feasible) {
     _.forOwn(result, (item, key) => {
       if (key.indexOf('slack') < 0 && item > 0
@@ -131,19 +124,31 @@ function generateVolume(parameters) {
     });
   }
 
-  trainedMuscles.forEach((mKey) => {
-    console.log(mKey);
-    let currentVolume = 0;
-    workout.forEach((exShort) => {
-      let exercise = ec.get(exShort.key);
-      _.forOwn(exercise.musclesUsed, (percentage, key) => {
-        if (mKey === key) {
-          currentVolume += exShort.sets * (percentage / 100);
-        }
-      })
-    });
-    console.log((currentVolume / mc.get(mKey).mev) * 100);
-  });
+  // LOGS ------------------------
+  // console.log(constraints);
+  // console.log(variables);
+  // console.log(ints);
+  // console.log(binaries);
+  console.log('__________________________________________');
+  console.log('SOLUTION');
+  console.log(workout);
+  // trainedMuscles.forEach((mKey) => {
+  //   console.log(mKey);
+  //   let currentVolume = 0;
+  //   workout.forEach((exShort) => {
+  //     let exercise = ec.get(exShort.key);
+  //     _.forOwn(exercise.musclesUsed, (percentage, key) => {
+  //       if (mKey === key) {
+  //         currentVolume += exShort.sets * (percentage / 100);
+  //       }
+  //     })
+  //   });
+  //   console.log((currentVolume / mc.get(mKey).mev) * 100);
+  // });
+  // END OF LOGS -----------------------
+
+
+
 
   return workout;
 }
@@ -162,9 +167,9 @@ function getIsolationExerciseKey(muscleKey) {
   });
 
 
-  console.log('__________________________');
-  console.log(currentExerciseKey, currentMaxPercentage);
-  console.log('________________________');
+  // console.log('__________________________');
+  // console.log(currentExerciseKey, currentMaxPercentage);
+  // console.log('________________________');
 
   return currentExerciseKey;
 }

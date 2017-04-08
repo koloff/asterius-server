@@ -9,6 +9,8 @@ const types = {
   isolation: 'isolation'
 };
 
+
+// todo add more upperTrapezius volume in exercises
 //noinspection JSUnresolvedFunction
 let exercises = [
 

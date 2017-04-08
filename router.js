@@ -7,9 +7,6 @@ router.route('/muscles/collection')
 router.route('/exercises/collection')
   .get(controllers.exercises.getExercisesCollection);
 
-router.route('/algorithm/generate-exercises')
-  .get(controllers.auth.authenticate, controllers.algorithm.generateExercises);
-
 router.route('/algorithm/generate-split')
   .get(controllers.auth.authenticate, controllers.algorithm.generateSplit);
 
