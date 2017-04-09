@@ -125,10 +125,10 @@ function generateVolume(parameters) {
   }
 
   // LOGS ------------------------
-  // console.log(constraints);
-  // console.log(variables);
-  // console.log(ints);
-  // console.log(binaries);
+  console.log(constraints);
+  console.log(variables);
+  console.log(ints);
+  console.log(binaries);
   console.log('__________________________________________');
   console.log('SOLUTION');
   console.log(workout);

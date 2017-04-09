@@ -19,7 +19,17 @@ exports.generateSplit = function(req, res) {
       if (!split) {
         res.status(400).send({ok: false, error: 'IMPOSSIBLE'});
       } else {
-        res.status(200).send(split)
+
+
+        db.ref(`/split/${uid}`).set(split)
+          .then(() => {
+            res.status(200).send({ok: true})
+          })
+          .catch((err) => {
+            res.status(400).send({ok: false, error: 'FIREBASE_ERROR'});
+          });
+
+
       }
 
     });

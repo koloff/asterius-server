@@ -152,7 +152,7 @@ function generateSplit(userParameters, userPreferredMuscles) {
     pullOptions.trainedMuscles = _.clone(splits.pull);
     userPreferredMuscles.forEach(mKey => {
       let muscle = mc.get(mKey);
-      if (muscle.types.indexOf('push') >= 0) {
+      if (muscle.types.indexOf('pull') >= 0) {
         pullOptions.preferredMuscles.push(muscle.key)
       }
     });
