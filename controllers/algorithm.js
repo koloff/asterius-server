@@ -5,8 +5,11 @@ exports.generateSplit = function(req, res) {
   let db = admin.database();
   let uid = req.uid;
 
-  db.ref(`userParameters/${uid}`).once('value', (snap) => {
+  console.log(uid);
+
+  db.ref(`/userParameters/${uid}`).once('value', (snap) => {
     let userParameters = snap.val();
+    console.log(userParameters);
 
     db.ref(`/preferredMuscles/${uid}`).once('value', (snap) => {
       let preferredMuscles = snap.val();
@@ -23,6 +26,7 @@ exports.generateSplit = function(req, res) {
 
         db.ref(`/split/${uid}`).set(split)
           .then(() => {
+            console.log('split done');
             res.status(200).send({ok: true})
           })
           .catch((err) => {
