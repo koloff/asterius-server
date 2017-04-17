@@ -107,7 +107,7 @@ let muscles = [
       group: 'Back',
       name: 'Latissimus Dorsi',
       broName: 'Lats',
-      color: '#ffffff'
+      color: '#ffd200'
     }
   }),
   new Muscle({
@@ -119,7 +119,7 @@ let muscles = [
       group: 'Back',
       name: 'Teres Minor, Infraspinatus, Supraspinatus, Subscapularis',
       broName: 'Rotator Cuff',
-      color: '#ffffff'
+      color: '#ff9200'
     }
   }),
   new Muscle({
@@ -131,7 +131,7 @@ let muscles = [
       group: 'Core',
       name: 'Rectus Abdominis',
       broName: 'Abs',
-      color: '#ffffff'
+      color: '#ff7609'
     }
   }),
   new Muscle({
@@ -143,7 +143,7 @@ let muscles = [
       group: 'Core',
       name: 'Abdominal Obliques',
       broName: 'Obliques',
-      color: '#ffffff'
+      color: '#08ff0f'
     }
   }),
   new Muscle({
@@ -155,7 +155,7 @@ let muscles = [
       group: 'Biceps',
       name: 'Biceps Brachii Long Head',
       broName: 'Biceps Outer Head',
-      color: '#ffffff'
+      color: '#9aff6e'
     }
   }),
   new Muscle({
@@ -167,7 +167,7 @@ let muscles = [
       group: 'Biceps',
       name: 'Biceps Brachii Short Head',
       broName: 'Biceps Inner Head',
-      color: '#ffffff'
+      color: '#ff44e3'
     }
   }),
   new Muscle({
@@ -203,7 +203,7 @@ let muscles = [
       group: 'Forearms',
       name: 'Brachioradialis',
       broName: 'Brachioradialis',
-      color: '#ffffff'
+      color: '#0026ff'
     }
   }),
   new Muscle({
@@ -215,7 +215,7 @@ let muscles = [
       group: 'Forearms',
       name: 'Flexors Group',
       broName: 'Flexors',
-      color: '#ffffff'
+      color: '#006cff'
     }
   }),
   new Muscle({
@@ -227,7 +227,7 @@ let muscles = [
       group: 'Forearms',
       name: 'Extensors Group',
       broName: 'Extensors',
-      color: '#ffffff'
+      color: '#00b8ff'
     }
   }),
   new Muscle({
@@ -239,7 +239,7 @@ let muscles = [
       group: 'Legs',
       name: 'Quadriceps Group',
       broName: 'Quads',
-      color: '#ffffff'
+      color: '#00ffab'
     }
   }),
   new Muscle({
@@ -251,7 +251,7 @@ let muscles = [
       group: 'Legs',
       name: 'Hamstrings Group',
       broName: 'Hamstrings',
-      color: '#ffffff'
+      color: '#28ff7b'
     }
   }),
   new Muscle({
@@ -263,7 +263,7 @@ let muscles = [
       group: 'Legs',
       name: 'Gluteus Group',
       broName: 'Glutes',
-      color: '#ffffff'
+      color: '#55ff00'
     }
   }),
   new Muscle({
@@ -275,7 +275,7 @@ let muscles = [
       group: 'Legs',
       name: 'Soleus, Gastrocnemius',
       broName: 'Calves',
-      color: '#ffffff'
+      color: '#b5ff00'
     }
   }),
 
