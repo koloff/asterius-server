@@ -11,32 +11,26 @@ exports.generateSplit = function(req, res) {
     let userParameters = snap.val();
     console.log(userParameters);
 
-    db.ref(`/preferredMuscles/${uid}`).once('value', (snap) => {
-      let preferredMuscles = snap.val();
+    let preferredMuscles = userParameters.preferredMuscles ? userParameters.preferredMuscles.filter(function(v) { return !!v; }) : [];
+    let split = generateSplit(userParameters, preferredMuscles);
+    console.log(split);
+    if (!split) {
+      res.status(400).send({ok: false, error: 'IMPOSSIBLE'});
+    } else {
 
 
-      console.log(userParameters);
-      console.log(preferredMuscles);
-      let split = generateSplit(userParameters, preferredMuscles);
-      console.log(split);
-      if (!split) {
-        res.status(400).send({ok: false, error: 'IMPOSSIBLE'});
-      } else {
+      db.ref(`/split/${uid}`).set(split)
+        .then(() => {
+          console.log('split done');
+          res.status(200).send({ok: true})
+        })
+        .catch((err) => {
+          res.status(400).send({ok: false, error: 'FIREBASE_ERROR'});
+        });
 
 
-        db.ref(`/split/${uid}`).set(split)
-          .then(() => {
-            console.log('split done');
-            res.status(200).send({ok: true})
-          })
-          .catch((err) => {
-            res.status(400).send({ok: false, error: 'FIREBASE_ERROR'});
-          });
+    }
 
-
-      }
-
-    });
   });
 };
 

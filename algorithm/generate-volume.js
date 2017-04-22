@@ -49,6 +49,7 @@ function generateVolume(parameters) {
   });
 
   allMuscles.forEach((mKey) => {
+    console.log(mKey);
     constraints[mKey] = {};
     // do not overtrain muscles
     constraints[mKey].max = (mc.get(mKey).mrv * 100 /*in percentage*/) * mrvMultiplier;
@@ -125,13 +126,13 @@ function generateVolume(parameters) {
   }
 
   // LOGS ------------------------
-  console.log(constraints);
-  console.log(variables);
-  console.log(ints);
-  console.log(binaries);
-  console.log('__________________________________________');
-  console.log('SOLUTION');
-  console.log(workout);
+  // console.log(constraints);
+  // console.log(variables);
+  // console.log(ints);
+  // console.log(binaries);
+  // console.log('__________________________________________');
+  // console.log('SOLUTION');
+  // console.log(workout);
   // trainedMuscles.forEach((mKey) => {
   //   console.log(mKey);
   //   let currentVolume = 0;
