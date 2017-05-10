@@ -10,4 +10,7 @@ router.route('/exercises/collection')
 router.route('/algorithm/generate-split')
   .get(controllers.auth.authenticate, controllers.algorithm.generateSplit);
 
+router.route('/algorithm/estimated-values/:workoutDate/:exerciseIndex/:setIndex')
+  .get(controllers.auth.authenticate, controllers.algorithm.createEstimatedValues);
+
 module.exports = router;

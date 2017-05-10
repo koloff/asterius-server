@@ -7,3 +7,7 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://asterius-a8808.firebaseio.com/"
 });
+
+
+let database = require('../database');
+database.init();

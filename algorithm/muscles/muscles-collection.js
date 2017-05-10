@@ -123,30 +123,6 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.core.abs,
-    mev: 1.3,
-    mrv: 4,
-    types: [types.other],
-    info: {
-      group: 'Core',
-      name: 'Rectus Abdominis',
-      broName: 'Abs',
-      color: '#ff7609'
-    }
-  }),
-  new Muscle({
-    key: keys.core.obliques,
-    mev: 0.7,
-    mrv: 4,
-    types: [types.other],
-    info: {
-      group: 'Core',
-      name: 'Abdominal Obliques',
-      broName: 'Obliques',
-      color: '#08ff0f'
-    }
-  }),
-  new Muscle({
     key: keys.biceps.longHead,
     mev: 1,
     mrv: 4,
@@ -228,6 +204,30 @@ let muscles = [
       name: 'Extensors Group',
       broName: 'Extensors',
       color: '#00b8ff'
+    }
+  }),
+  new Muscle({
+    key: keys.core.abs,
+    mev: 1.3,
+    mrv: 4,
+    types: [types.other],
+    info: {
+      group: 'Core',
+      name: 'Rectus Abdominis',
+      broName: 'Abs',
+      color: '#ff7609'
+    }
+  }),
+  new Muscle({
+    key: keys.core.obliques,
+    mev: 0.7,
+    mrv: 4,
+    types: [types.other],
+    info: {
+      group: 'Core',
+      name: 'Abdominal Obliques',
+      broName: 'Obliques',
+      color: '#08ff0f'
     }
   }),
   new Muscle({
