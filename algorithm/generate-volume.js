@@ -22,7 +22,12 @@ function generateVolume(parameters) {
   let exercises = ec.exercises;
 
 
-  console.log(parameters);
+  console.log('TRAINED MUSCLES');
+  console.log(trainedMuscles);
+
+  console.log('PREFERRED MUSCLES');
+  console.log(preferredMuscles);
+
 
   // ILPP model constraints
   let constraints = {};
@@ -49,7 +54,6 @@ function generateVolume(parameters) {
   });
 
   allMuscles.forEach((mKey) => {
-    console.log(mKey);
     constraints[mKey] = {};
     // do not overtrain muscles
     constraints[mKey].max = (mc.get(mKey).mrv * 100 /*in percentage*/) * mrvMultiplier;
@@ -125,7 +129,7 @@ function generateVolume(parameters) {
     });
   }
 
-  // LOGS ------------------------
+  // console.log('---------------------------LOGS---------------------------');
   // console.log(constraints);
   // console.log(variables);
   // console.log(ints);
@@ -146,10 +150,8 @@ function generateVolume(parameters) {
   //   });
   //   console.log((currentVolume / mc.get(mKey).mev) * 100);
   // });
-  // END OF LOGS -----------------------
-
-
-
+  //
+  // console.log('---------------------------END LOGS---------------------------');
 
   return workout;
 }

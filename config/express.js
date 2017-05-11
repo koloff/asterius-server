@@ -8,9 +8,6 @@ let helmet = require('helmet');
 let router = require('../router');
 let app = express();
 
-
-
-
 // allows CORS
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // restrict it to the required domain
@@ -24,7 +21,6 @@ app.all('/*', function(req, res, next) {
   }
 });
 
-// adds security
 app.use(helmet());
 
 // logs requests

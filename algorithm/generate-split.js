@@ -5,8 +5,23 @@ let generateVolume = require('./generate-volume');
 let calculateFitnessLevel = require('./calculate-fitness-level');
 let splits = require('./splits');
 
-function generateSplit(userParameters, userPreferredMuscles) {
 
+function generateSingleWorkout(options) {
+  let workout = generateVolume(options);
+  if (!workout.length) {
+    // if preferred muscles are too much, replace isolation exercises with compound lifts
+    options.minIsolationSetsCount = 0;
+    workout = generateVolume(options);
+    // if still cannot generate volume -> remove preferred muscles
+    if (!workout.length) {
+      options.preferredMuscles = [];
+      workout = generateVolume(options);
+    }
+  }
+  return workout;
+}
+
+function generateSplit(userParameters, userPreferredMuscles) {
   let fitnessLevel = calculateFitnessLevel(userParameters);
 
   // At 1-2 training sessions per week generate FULL BODY split
@@ -26,15 +41,7 @@ function generateSplit(userParameters, userPreferredMuscles) {
     fullBodyOptions.trainedMuscles = _.clone(splits.fullBody);
     fullBodyOptions.preferredMuscles = _.clone(userPreferredMuscles);
 
-    let A = generateVolume(fullBodyOptions);
-    if (!A) {
-      fullBodyOptions.minIsolationSetsCount = 0;
-      A = generateSplit(fullBodyOptions);
-      if (!A) {
-        return null;
-      }
-    }
-
+    let A = generateSingleWorkout(fullBodyOptions);
     return {A};
   }
 
@@ -62,17 +69,7 @@ function generateSplit(userParameters, userPreferredMuscles) {
 
     });
 
-    let A = generateVolume(upperOptions);
-
-    if (!A.length) {
-      console.log('NO A');
-      upperOptions.minIsolationSetsCount = 0;
-      A = generateVolume(upperOptions);
-      if (!A.length) {
-        return null;
-      }
-    }
-
+    let A = generateSingleWorkout(upperOptions);
 
     // Training B: LOWER BODY
     let lowerOptions = {
@@ -94,15 +91,7 @@ function generateSplit(userParameters, userPreferredMuscles) {
       }
     });
 
-    let B = generateVolume(lowerOptions);
-
-    if (!B) {
-      upperOptions.minIsolationSetsCount = 0;
-      B = generateVolume(lowerOptions);
-      if (!B) {
-        return null;
-      }
-    }
+    let B = generateSingleWorkout(lowerOptions);
 
     return {A, B};
   }
@@ -131,11 +120,7 @@ function generateSplit(userParameters, userPreferredMuscles) {
       }
     });
 
-    let A = generateVolume(pushOptions);
-    if (!A) {
-      pushOptions.minIsolationSetsCount = 0;
-      A = generateVolume(pushOptions);
-    }
+    let A = generateSingleWorkout(pushOptions);
 
     // training B: PULL
     let pullOptions = {
@@ -157,11 +142,7 @@ function generateSplit(userParameters, userPreferredMuscles) {
       }
     });
 
-    let B = generateVolume(pullOptions);
-    if (!B) {
-      pullOptions.minIsolationSetsCount = 0;
-      B = generateVolume(pullOptions);
-    }
+    let B = generateSingleWorkout(pullOptions);
 
     // training C: LOWER BODY
     let lowerOptions = {
@@ -183,16 +164,10 @@ function generateSplit(userParameters, userPreferredMuscles) {
       }
     });
 
-    let C = generateVolume(lowerOptions);
-    if (!C) {
-      lowerOptions.minIsolationSetsCount = 0;
-      C = generateVolume(lowerOptions);
-    }
+    let C = generateSingleWorkout(lowerOptions);
 
     return {A, B, C};
   }
 }
-
-// console.log(generateSplit());
 
 module.exports = generateSplit;

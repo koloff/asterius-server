@@ -6,6 +6,7 @@ exports.generateSplit = async function(req, res) {
 
   try {
     let userParameters = await database.get(`/userParameters/${uid}`);
+    console.log(userParameters);
     let preferredMuscles = userParameters.preferredMuscles ? userParameters.preferredMuscles.filter(function(v) {
       // removes falsy values
       return !!v;
@@ -40,6 +41,7 @@ exports.createEstimatedValues = async function(req, res, next) {
     await database.save(`/workouts/${uid}/${workoutDate}/exercises/${exerciseIndex}/sets/${setIndex}/isEstimated`, true);
     res.status(200).send({ok: true});
   } catch (err) {
+    res.status(400).send({ok: false});
     console.log(err);
   }
 };
