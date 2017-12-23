@@ -2,26 +2,17 @@ let database = require('../database');
 let generateSplit = require('../algorithm/generate-split');
 
 exports.generateSplit = async function(req, res) {
-  let uid = req.uid;
-
   try {
-    let userParameters = await database.get(`/userParameters/${uid}`);
-    console.log(userParameters);
-    let preferredMuscles = userParameters.preferredMuscles ? userParameters.preferredMuscles.filter(function(v) {
-      // removes falsy values
-      return !!v;
-    }) : [];
-
-    let split = generateSplit(userParameters, preferredMuscles);
-    console.log(split);
-    await database.save(`/split/${uid}`, split);
-    res.status(200).send({ok: true});
+    let userParameters = req.body.userParameters;
+    let workouts = generateSplit(userParameters);
+    console.log(workouts);
+    res.status(200).send({ok: true, workouts: workouts});
   } catch (err) {
     console.log(err);
     if (err.code === 'CANNOT_GENERATE_SPLIT') {
       res.status(400).send({ok: false, error: err.code});
     } else {
-      res.status(400).send({ok: false, error: 'FIREBASE_ERROR'});
+      res.status(400).send({ok: false, error: 'ERROR'});
     }
   }
 };

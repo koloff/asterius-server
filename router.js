@@ -7,8 +7,9 @@ router.route('/muscles/collection')
 router.route('/exercises/collection')
   .get(controllers.exercises.getExercisesCollection);
 
-router.route('/algorithm/generate-split')
-  .get(controllers.auth.authenticate, controllers.algorithm.generateSplit);
+
+router.route('/algorithm/generate-workouts')
+  .post(controllers.algorithm.generateSplit);
 
 router.route('/algorithm/estimated-values/:workoutDate/:exerciseIndex/:setIndex')
   .get(controllers.auth.authenticate, controllers.algorithm.createEstimatedValues);
