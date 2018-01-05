@@ -9,7 +9,7 @@ router.route('/exercises/collection')
 
 
 router.route('/algorithm/generate-workouts')
-  .post(controllers.algorithm.generateSplit);
+  .post(controllers.algorithm.generateWorkouts);
 
 router.route('/algorithm/estimated-values/:workoutDate/:exerciseIndex/:setIndex')
   .get(controllers.auth.authenticate, controllers.algorithm.createEstimatedValues);

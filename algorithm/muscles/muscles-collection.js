@@ -1,6 +1,6 @@
 let _ = require('lodash');
 let Muscle = require('./muscle');
-let keys = require('./muscles-keys');
+let ids = require('./muscles-ids');
 
 
 let types = {
@@ -15,7 +15,7 @@ let types = {
 // mrv - minimum recoverable volume for 1 session
 let muscles = [
   new Muscle({
-    key: keys.shoulders.anteriorHead,
+    id: ids.shoulders.anteriorHead,
     mev: 1,
     mrv: 5,
     types: [types.upperBody, types.push],
@@ -27,7 +27,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.shoulders.lateralHead,
+    id: ids.shoulders.lateralHead,
     mev: 1,
     mrv: 5,
     types: [types.upperBody, types.push],
@@ -39,7 +39,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.shoulders.posteriorHead,
+    id: ids.shoulders.posteriorHead,
     mev: 1,
     mrv: 5,
     types: [types.upperBody, types.pull],
@@ -51,7 +51,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.chest.clavicularHead,
+    id: ids.chest.clavicularHead,
     mev: 2,
     mrv: 6,
     types: [types.upperBody, types.push],
@@ -63,7 +63,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.chest.sternalHead,
+    id: ids.chest.sternalHead,
     mev: 2,
     mrv: 6,
     types: [types.upperBody, types.push],
@@ -75,7 +75,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.back.upperTrapezius,
+    id: ids.back.upperTrapezius,
     mev: 0.7,
     mrv: 4,
     types: [types.upperBody, types.pull],
@@ -87,7 +87,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.back.middleBack,
+    id: ids.back.middleBack,
     mev: 1.5,
     mrv: 6,
     types: [types.upperBody, types.pull],
@@ -99,7 +99,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.back.lats,
+    id: ids.back.lats,
     mev: 1.5,
     mrv: 6,
     types: [types.upperBody, types.pull],
@@ -111,7 +111,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.back.rotatorCuff,
+    id: ids.back.rotatorCuff,
     mev: 0.7,
     mrv: 4,
     types: [types.upperBody, types.pull],
@@ -123,7 +123,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.biceps.longHead,
+    id: ids.biceps.longHead,
     mev: 1,
     mrv: 4,
     types: [types.upperBody, types.pull],
@@ -135,7 +135,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.biceps.shortHead,
+    id: ids.biceps.shortHead,
     mev: 0.8,
     mrv: 4,
     types: [types.upperBody, types.pull],
@@ -147,7 +147,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.triceps.longHead,
+    id: ids.triceps.longHead,
     mev: 1,
     mrv: 6,
     types: [types.upperBody, types.push],
@@ -159,7 +159,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.triceps.shortHead,
+    id: ids.triceps.shortHead,
     mev: 0.7,
     mrv: 5,
     types: [types.upperBody, types.push],
@@ -171,7 +171,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.forearms.brachioradialis,
+    id: ids.forearms.brachioradialis,
     mev: 0.7,
     mrv: 4,
     types: [types.upperBody, types.pull],
@@ -183,7 +183,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.forearms.flexors,
+    id: ids.forearms.flexors,
     mev: 0.3,
     mrv: 3,
     types: [types.upperBody, types.other],
@@ -195,7 +195,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.forearms.extensors,
+    id: ids.forearms.extensors,
     mev: 0.3,
     mrv: 3,
     types: [types.upperBody, types.other],
@@ -207,7 +207,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.core.abs,
+    id: ids.core.abs,
     mev: 1.3,
     mrv: 4,
     types: [types.other],
@@ -219,7 +219,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.core.obliques,
+    id: ids.core.obliques,
     mev: 0.7,
     mrv: 4,
     types: [types.other],
@@ -231,7 +231,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.legs.quadriceps,
+    id: ids.legs.quadriceps,
     mev: 1.5,
     mrv: 7,
     types: [types.lowerBody],
@@ -243,7 +243,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.legs.hamstrings,
+    id: ids.legs.hamstrings,
     mev: 1.5,
     mrv: 7,
     types: [types.lowerBody],
@@ -255,7 +255,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.legs.glutes,
+    id: ids.legs.glutes,
     mev: 1,
     mrv: 7,
     types: [types.lowerBody],
@@ -267,7 +267,7 @@ let muscles = [
     }
   }),
   new Muscle({
-    key: keys.legs.calves,
+    id: ids.legs.calves,
     mev: 0.5,
     mrv: 5,
     types: [types.lowerBody, types.other],
@@ -281,9 +281,9 @@ let muscles = [
 
 ];
 
-function get(key) {
+function get(id) {
   return _.find(muscles,function(muscle) {
-    return muscle.key === key;
+    return muscle.id === id;
   });
 }
 
@@ -295,5 +295,5 @@ function get(key) {
 
 
 module.exports = {
-  keys, muscles, get
+  ids: ids, muscles, get
 };

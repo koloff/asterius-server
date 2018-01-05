@@ -47,14 +47,14 @@ function generateWorkouts(userParameters) {
     fullBodyOptions.trainedMuscles = _.clone(splits.fullBody);
     fullBodyOptions.preferredMuscles = _.clone(preferredMuscles);
 
-    let A = generateSingleWorkout(fullBodyOptions);
-    return {A};
+    let fullBodyWorkout = generateSingleWorkout(fullBodyOptions);
+    return [fullBodyWorkout];
   }
 
   // At 3-4 training sessions per week generate upper/lower split
   else if (userParameters.days === 1) {
 
-    // Training A: UPPER BODY
+    // Training upperBodyWorkout: UPPER BODY
     let upperOptions = {
       trainedMuscles: [],
       preferredMuscles: [],
@@ -70,14 +70,14 @@ function generateWorkouts(userParameters) {
     preferredMuscles.forEach(mKey => {
       let muscle = mc.get(mKey);
       if (muscle.types.indexOf('upperBody') >= 0) {
-        upperOptions.preferredMuscles.push(muscle.key)
+        upperOptions.preferredMuscles.push(muscle.id)
       }
 
     });
 
-    let A = generateSingleWorkout(upperOptions);
+    let upperBodyWorkout = generateSingleWorkout(upperOptions);
 
-    // Training B: LOWER BODY
+    // Training loweBodyWorkout: LOWER BODY
     let lowerOptions = {
       trainedMuscles: [],
       preferredMuscles: [],
@@ -93,20 +93,20 @@ function generateWorkouts(userParameters) {
     preferredMuscles.forEach(mKey => {
       let muscle = mc.get(mKey);
       if (muscle.types.indexOf('lowerBody') >= 0 || muscle.info.group === 'Core') {
-        lowerOptions.preferredMuscles.push(muscle.key)
+        lowerOptions.preferredMuscles.push(muscle.id)
       }
     });
 
-    let B = generateSingleWorkout(lowerOptions);
+    let loweBodyWorkout = generateSingleWorkout(lowerOptions);
 
-    return {A, B};
+    return [upperBodyWorkout, loweBodyWorkout];
   }
 
 
 
   // At 5-6 training sessions per week generate push/pull/legs split
   else {
-    // training A: PUSH
+    // training pushWorkout: PUSH
     let pushOptions = {
       trainedMuscles: [],
       preferredMuscles: [],
@@ -122,13 +122,13 @@ function generateWorkouts(userParameters) {
     preferredMuscles.forEach(mKey => {
       let muscle = mc.get(mKey);
       if (muscle.types.indexOf('push') >= 0) {
-        pushOptions.preferredMuscles.push(muscle.key)
+        pushOptions.preferredMuscles.push(muscle.id)
       }
     });
 
-    let A = generateSingleWorkout(pushOptions);
+    let pushWorkout = generateSingleWorkout(pushOptions);
 
-    // training B: PULL
+    // training pullWorkout: PULL
     let pullOptions = {
       trainedMuscles: [],
       preferredMuscles: [],
@@ -144,13 +144,13 @@ function generateWorkouts(userParameters) {
     preferredMuscles.forEach(mKey => {
       let muscle = mc.get(mKey);
       if (muscle.types.indexOf('pull') >= 0) {
-        pullOptions.preferredMuscles.push(muscle.key)
+        pullOptions.preferredMuscles.push(muscle.id)
       }
     });
 
-    let B = generateSingleWorkout(pullOptions);
+    let pullWorkout = generateSingleWorkout(pullOptions);
 
-    // training C: LOWER BODY
+    // training lowerBodyWorkout: LOWER BODY
     let lowerOptions = {
       trainedMuscles: [],
       preferredMuscles: [],
@@ -166,13 +166,13 @@ function generateWorkouts(userParameters) {
     preferredMuscles.forEach(mKey => {
       let muscle = mc.get(mKey);
       if (muscle.types.indexOf('lowerBody') >= 0 || muscle.info.group === 'Core') {
-        lowerOptions.preferredMuscles.push(muscle.key)
+        lowerOptions.preferredMuscles.push(muscle.id)
       }
     });
 
-    let C = generateSingleWorkout(lowerOptions);
+    let lowerBodyWorkout = generateSingleWorkout(lowerOptions);
 
-    return {A, B, C};
+    return [pushWorkout, pullWorkout, lowerBodyWorkout];
   }
 }
 

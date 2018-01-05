@@ -1,15 +1,24 @@
 let database = require('../database');
-let generateSplit = require('../algorithm/generate-split');
+let generateSplit = require('../algorithm/generate-workouts');
 
-exports.generateSplit = async function(req, res) {
+exports.generateWorkouts = async function(req, res) {
   try {
     let userParameters = req.body.userParameters;
     let workouts = generateSplit(userParameters);
     console.log(workouts);
-    res.status(200).send({ok: true, workouts: workouts});
+
+    // todo create workout names from db if auth
+    let letters = ['A', 'B', 'C'];
+    let workoutsWithNames = workouts.map((exercises, index) => {
+      return {
+        name: `Workout ${letters[index]}`,
+        exercises: exercises
+      }
+    });
+    res.status(200).send({ok: true, workouts: workoutsWithNames});
   } catch (err) {
     console.log(err);
-    if (err.code === 'CANNOT_GENERATE_SPLIT') {
+    if (err.code === 'CANNOT_GENERATE_WORKOUTS') {
       res.status(400).send({ok: false, error: err.code});
     } else {
       res.status(400).send({ok: false, error: 'ERROR'});

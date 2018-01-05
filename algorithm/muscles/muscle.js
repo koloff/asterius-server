@@ -1,6 +1,6 @@
 module.exports = class Muscle {
   constructor(options) {
-    this.key = options.key;
+    this.id = options.id;
     this.mev = options.mev;
     this.mrv = options.mrv;
     this.types = options.types;

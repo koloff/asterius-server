@@ -2,81 +2,81 @@ let mc = require('./muscles/muscles-collection');
 
 module.exports = {
   fullBody: [
-    mc.keys.chest.clavicularHead,
-    mc.keys.chest.sternalHead,
+    mc.ids.chest.clavicularHead,
+    mc.ids.chest.sternalHead,
 
-    mc.keys.shoulders.lateralHead,
-    mc.keys.shoulders.anteriorHead,
-    mc.keys.shoulders.posteriorHead,
+    mc.ids.shoulders.lateralHead,
+    mc.ids.shoulders.anteriorHead,
+    mc.ids.shoulders.posteriorHead,
 
-    mc.keys.back.lats,
-    mc.keys.back.middleBack,
+    mc.ids.back.lats,
+    mc.ids.back.middleBack,
 
-    mc.keys.triceps.longHead,
-    mc.keys.triceps.shortHead,
+    mc.ids.triceps.longHead,
+    mc.ids.triceps.shortHead,
 
-    mc.keys.biceps.longHead,
-    mc.keys.biceps.shortHead,
+    mc.ids.biceps.longHead,
+    mc.ids.biceps.shortHead,
 
-    mc.keys.legs.quadriceps,
-    mc.keys.legs.hamstrings,
-    mc.keys.legs.glutes
+    mc.ids.legs.quadriceps,
+    mc.ids.legs.hamstrings,
+    mc.ids.legs.glutes
   ],
 
   upperBody: [
-    mc.keys.chest.clavicularHead,
-    mc.keys.chest.sternalHead,
+    mc.ids.chest.clavicularHead,
+    mc.ids.chest.sternalHead,
 
-    mc.keys.shoulders.lateralHead,
-    mc.keys.shoulders.anteriorHead,
-    mc.keys.shoulders.posteriorHead,
+    mc.ids.shoulders.lateralHead,
+    mc.ids.shoulders.anteriorHead,
+    mc.ids.shoulders.posteriorHead,
 
-    mc.keys.back.lats,
-    mc.keys.back.middleBack,
-    mc.keys.back.rotatorCuff,
+    mc.ids.back.lats,
+    mc.ids.back.middleBack,
+    mc.ids.back.rotatorCuff,
 
-    mc.keys.biceps.longHead,
-    mc.keys.biceps.shortHead,
+    mc.ids.biceps.longHead,
+    mc.ids.biceps.shortHead,
 
-    mc.keys.triceps.longHead,
-    mc.keys.triceps.shortHead,
+    mc.ids.triceps.longHead,
+    mc.ids.triceps.shortHead,
   ],
 
   lowerBody: [
-    mc.keys.legs.quadriceps,
-    mc.keys.legs.hamstrings,
-    mc.keys.legs.glutes,
-    mc.keys.legs.calves,
+    mc.ids.legs.quadriceps,
+    mc.ids.legs.hamstrings,
+    mc.ids.legs.glutes,
+    mc.ids.legs.calves,
 
-    mc.keys.core.abs,
-    mc.keys.core.obliques,
+    mc.ids.core.abs,
+    mc.ids.core.obliques,
   ],
 
 
   push: [
-    mc.keys.chest.clavicularHead,
-    mc.keys.chest.sternalHead,
+    mc.ids.chest.clavicularHead,
+    mc.ids.chest.sternalHead,
 
-    mc.keys.shoulders.lateralHead,
-    mc.keys.shoulders.anteriorHead,
-    mc.keys.shoulders.posteriorHead,
+    mc.ids.shoulders.lateralHead,
+    mc.ids.shoulders.anteriorHead,
+    mc.ids.shoulders.posteriorHead,
 
-    mc.keys.triceps.longHead,
-    mc.keys.triceps.shortHead,
+    mc.ids.triceps.longHead,
+    mc.ids.triceps.shortHead,
   ],
 
   pull: [
-    mc.keys.back.lats,
-    mc.keys.back.middleBack,
-    mc.keys.back.rotatorCuff,
-    mc.keys.back.upperTrapezius,
+    mc.ids.back.lats,
+    mc.ids.back.middleBack,
+    mc.ids.back.rotatorCuff,
+    mc.ids.back.upperTrapezius,
 
-    mc.keys.biceps.longHead,
-    mc.keys.biceps.shortHead,
+    mc.ids.biceps.longHead,
+    mc.ids.biceps.shortHead,
     // todo: add exercises and edit volume
-    // mc.keys.forearms.brachioradialis,
-    // mc.keys.forearms.extensors,
-    // mc.keys.forearms.flexors
+    // mc.ids.forearms.brachioradialis,
+    // mc.ids.forearms.extensors,
+    // mc.ids.forearms.flexors
   ]
 
 
